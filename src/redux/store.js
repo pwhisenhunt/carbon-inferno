@@ -7,14 +7,12 @@ import createHistory from 'history/createBrowserHistory';
 import rootReducer from './reducers';
 import config from '../config';
 
-const { API_ENDPOINT } = config;
-
 export const history = createHistory();
 
 const initialState = {};
 const enhancers = [];
 const middleware = [
-  thunk.withExtraArgument(`${API_ENDPOINT}/api/co2`),
+  thunk.withExtraArgument(`${config.API_ENDPOINT}/api/co2`),
   routerMiddleware(history),
 ];
 
