@@ -1,21 +1,25 @@
 const environment = {
   test: {
-    apiEndpoint: 'http://127.0.0.1:8000',
+    API_ENDPOINT: 'http://127.0.0.1:8000',
+    USE_ALLY: true,
   },
   development: {
-    apiEndpoint: 'https://carbondoomsday-test.herokuapp.com',
+    API_ENDPOINT: 'https://carbondoomsday-test.herokuapp.com',
+    USE_ALLY: true,
   },
   staging: {
-    apiEndpoint: 'https://carbondoomsday-test.herokuapp.com',
+    API_ENDPOINT: 'https://carbondoomsday-test.herokuapp.com',
+    USE_ALLY: false,
   },
   production: {
-    apiEndpoint: 'https://carbondoomsday.herokuapp.com',
+    API_ENDPOINT: 'https://carbondoomsday.herokuapp.com',
+    USE_ALLY: false,
   },
 }[process.env.NODE_ENV || 'development'];
 
 module.exports = Object.assign(
   {
-    node_env: process.env.NODE_ENV || 'development',
+    NODE_ENV: process.env.NODE_ENV || 'development',
   },
   environment,
 );

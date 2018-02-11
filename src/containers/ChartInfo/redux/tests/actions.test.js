@@ -11,8 +11,8 @@ import {
   WEEK_MONTH_PPM_SUCCESS,
 } from '../commands';
 
-const { apiEndpoint } = config;
-const middlewares = [thunk.withExtraArgument(`${apiEndpoint}/api/co2`)]; // add your middlewares like `redux-thunk`
+const { API_ENDPOINT } = config;
+const middlewares = [thunk.withExtraArgument(`${API_ENDPOINT}/api/co2`)]; // add your middlewares like `redux-thunk`
 const mockStore = configureStore(middlewares);
 
 describe('ChartInfo Actions', () => {
@@ -22,7 +22,7 @@ describe('ChartInfo Actions', () => {
       fetchMock.restore();
     });
     test('Should dispatch loading and success with result and correct rangeType when week/month req succeceds', () => {
-      fetchMock.getOnce(`${apiEndpoint}/api/co2/weekMonth`, {
+      fetchMock.getOnce(`${API_ENDPOINT}/api/co2/weekMonth`, {
         results: [{ one: 1 }],
       });
       const store = mockStore();
@@ -42,7 +42,7 @@ describe('ChartInfo Actions', () => {
         });
     });
     test('Should dispatch loading and error with error when week/month req fails', () => {
-      fetchMock.mock(`${apiEndpoint}/api/co2/weekMonth`, { throws: 'err' });
+      fetchMock.mock(`${API_ENDPOINT}/api/co2/weekMonth`, { throws: 'err' });
       const store = mockStore();
       store
         .dispatch(

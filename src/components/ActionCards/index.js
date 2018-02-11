@@ -9,8 +9,8 @@ const renderIcon = Icon => (
 
 const ActionCards = ({ actionCardItems }) => (
   <div className="card-wrapper">
-    {actionCardItems.map(item => (
-      <div className="card-container">
+    {actionCardItems.map((item, index) => (
+      <div className="card-container" key={index}>
         {renderIcon(item.icon)}
         <div className="card-content">
           <a href={item.href} className="card-title">
@@ -24,7 +24,7 @@ const ActionCards = ({ actionCardItems }) => (
 );
 
 ActionCards.propTypes = {
-  actionCardItems: PropTypes.object, //eslint-disable-line
+  actionCardItems: PropTypes.array, //eslint-disable-line
 };
 
 ActionCards.defaultProps = { actionCardItems: actionCardContent };
